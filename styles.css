@@ -239,6 +239,11 @@ ol {
     .hamburger-menu {
         display: flex;
     }
+
+    /* Adjust Search Bar for Mobile */
+    .search-bar {
+        display: none;
+    }
 }
 
 /* =========================
@@ -746,16 +751,8 @@ ol {
     right: -50px; /* Position to the right of the carousel */
 }
 
-.carousel-nav.prev::before {
-    content: '\f104'; /* Font Awesome left arrow */
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-}
-
-.carousel-nav.next::before {
-    content: '\f105'; /* Font Awesome right arrow */
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+.carousel-nav i {
+    pointer-events: none; /* Ensure clicks are on the button, not the icon */
 }
 
 /* Hover Effects for Navigation Arrows */
@@ -1310,3 +1307,4 @@ ol {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
