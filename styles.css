@@ -9,6 +9,7 @@
     --secondary-color: #F0F0F0; /* Lighter Elements */
     --accent-color: #1E90FF; /* Blue Accent */
     --text-color: #121212; /* Dark Text */
+    --light-text: #FFFFFF; /* Light Text */
     --background-color: #F0F0F0; /* Light Background */
     --card-background-color: #FFFFFF; /* Light Cards */
     --button-background: var(--accent-color);
@@ -189,9 +190,6 @@ ol {
     color: var(--text-color);
     cursor: pointer;
     transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .search-bar button:hover {
@@ -240,8 +238,13 @@ ol {
         display: flex;
     }
 
-    /* Adjust Search Bar for Mobile */
+    /* Hide Desktop Search Bar on Mobile Devices */
     .search-bar {
+        display: none;
+    }
+
+    /* Hide Sidebar Search Bar on Mobile Devices */
+    .sidebar-search {
         display: none;
     }
 }
@@ -252,17 +255,20 @@ ol {
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: 60px; /* Adjust this value to match your header's height */
     right: -100%;
     width: 80%;
     max-width: 300px;
-    height: 100vh;
+    /* height: 100vh; */ /* Removed to allow dynamic height */
+    height: auto; /* Allow height to adjust based on content */
+    max-height: calc(100vh - 60px); /* Prevent sidebar from exceeding viewport height */
     background: var(--primary-color);
     box-shadow: var(--box-shadow);
     z-index: 998;
-    transition: right 0.3s;
+    transition: right 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
+    overflow-y: auto; /* Enable internal scrolling if content exceeds max-height */
 }
 
 .sidebar.active {
@@ -338,7 +344,7 @@ ol {
 }
 
 .sidebar-search button i {
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 /* Sidebar Overlay */
@@ -408,7 +414,7 @@ ol {
 .btn-primary,
 .btn-secondary {
     background: var(--button-background);
-    color: var(--text-color);
+    color: var(--light-text);
     padding: 12px 25px;
     border: none;
     border-radius: 50px;
@@ -591,7 +597,7 @@ ol {
 
 .btn-secondary {
     background: var(--button-background);
-    color: var(--text-color);
+    color: var(--light-text);
     padding: 10px 25px;
     border: none;
     border-radius: 50px;
@@ -660,6 +666,7 @@ ol {
     width: 100%;
     margin: 0 auto; /* Center the carousel */
     max-width: 1000px; /* Adjust as needed */
+    padding: 0 50px; /* Added padding to accommodate buttons */
 }
 
 .carousel-slide {
@@ -677,6 +684,7 @@ ol {
     transform: translateX(-50%) rotateY(0deg) translateZ(0);
     opacity: 1;
     z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-slide.next {
@@ -724,41 +732,45 @@ ol {
     margin-bottom: 20px;
 }
 
-/* Navigation Arrows */
+/* Navigation Buttons */
 .carousel-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(30, 144, 255, 0.8); /* Semi-transparent background */
     border: none;
-    padding: 10px;
-    border-radius: 50%;
+    padding: 10px 20px; /* Increased padding for better visibility */
+    border-radius: 5px;
     cursor: pointer;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1rem; /* Adjusted font size for readability */
     z-index: 3;
     transition: background 0.3s, transform 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: bold;
 }
 
+/* Positioning the buttons outside the carousel container */
 .carousel-nav.prev {
-    left: -50px; /* Position to the left of the carousel */
+    left: 0; /* Position at the left edge of padding */
+    transform: translate(100%, -50%); /* Shift left by 100% of its width */
 }
 
 .carousel-nav.next {
-    right: -50px; /* Position to the right of the carousel */
+    right: 10px; /* Corrected with 'px' unit */
+    transform: translate(-100%, -50%); /* Shift right by 100% of its width */
 }
 
-.carousel-nav i {
-    pointer-events: none; /* Ensure clicks are on the button, not the icon */
+/* Hover Effects for Navigation Buttons */
+.carousel-nav.prev:hover {
+    transform: translate(100%, -50%) scale(1.05); /* Maintain position and add scale */
 }
 
-/* Hover Effects for Navigation Arrows */
-.carousel-nav:hover {
-    background: var(--button-hover-background);
-    transform: translateY(-50%) scale(1.1);
+.carousel-nav.next:hover {
+    transform: translate(-100%, -50%) scale(1.05); /* Maintain position and add scale */
 }
 
 /* Hide navigation buttons on mobile */
@@ -865,7 +877,7 @@ ol {
     padding: 12px 35px;
     font-size: 1rem;
     background: var(--button-background);
-    color: var(--text-color);
+    color: var(--light-text);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -1053,249 +1065,125 @@ ol {
 }
 
 /* =========================
-   Chatbot Button Styles
+   Carousel Styles
 ========================= */
 
-/* Chatbot Button Common Styles */
-.chatbot-button {
-    background: var(--button-background);
-    color: var(--text-color);
-    padding: 8px 15px;
-    border: none;
-    border-radius: 50px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-body);
-}
-
-.chatbot-button i {
-    margin-right: 8px;
-}
-
-/* Hover Effects */
-.chatbot-button:hover {
-    background: var(--button-hover-background);
-}
-
-/* Adjust Button Appearance in Navigation Menu */
-.nav-menu ul li .chatbot-button {
-    background: var(--accent-color);
-    color: var(--text-color);
-}
-
-.nav-menu ul li .chatbot-button:hover {
-    background: #1C86EE; /* Slightly darker shade */
-}
-
-/* Adjust Button Appearance in Sidebar */
-.sidebar-nav ul li .chatbot-button {
+.carousel-3d {
+    perspective: 1000px;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
     width: 100%;
-    text-align: left;
-    background: var(--secondary-color);
-    color: var(--text-color);
+    margin: 0 auto; /* Center the carousel */
+    max-width: 1000px; /* Adjust as needed */
 }
 
-.sidebar-nav ul li .chatbot-button:hover {
-    background: var(--accent-color);
-    color: var(--text-color);
+.carousel-slide {
+    position: absolute;
+    width: 80%; /* Adjust to ensure slides are fully visible */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 1s, opacity 1s;
+    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center the slides */
 }
 
-/* =========================
-   Chatbot Interface Styles
-========================= */
+.carousel-slide.active {
+    transform: translateX(-50%) rotateY(0deg) translateZ(0);
+    opacity: 1;
+    z-index: 2;
+}
 
-.chatbot-container {
-    display: none; /* Hidden by default */
-    position: fixed;
-    bottom: 80px; /* Above the theme toggle button */
-    right: 20px;
-    width: 350px;
-    max-width: 90%;
-    height: 500px;
+.carousel-slide.next {
+    transform: translateX(-50%) rotateY(-70deg) translateX(50%) translateZ(-200px);
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.carousel-slide.prev {
+    transform: translateX(-50%) rotateY(70deg) translateX(-50%) translateZ(-200px);
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.article-card {
     background: var(--card-background-color);
     border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform 0.3s, background 0.3s;
+    width: 100%;
     box-shadow: var(--box-shadow);
-    z-index: 1002;
-    display: flex;
-    flex-direction: column;
-    transition: var(--transition);
 }
 
-.chatbot-container.active {
-    display: flex;
+.article-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    loading: lazy; /* Lazy Loading */
 }
 
-.chatbot-header {
-    background: var(--primary-color);
-    padding: 10px 15px;
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chatbot-header h2 {
-    font-size: 1.2rem;
+.article-content {
+    padding: 20px;
     color: var(--text-color);
-    font-family: var(--font-heading);
 }
 
-.close-chatbot {
-    background: none;
-    border: none;
-    color: var(--text-color);
+.article-content h3 {
     font-size: 1.5rem;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.close-chatbot:hover {
+    font-family: var(--font-heading);
+    margin-bottom: 10px;
     color: var(--accent-color);
 }
 
-.chatbot-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    background: var(--background-color);
-}
-
-.chatbot-messages .message {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-.chatbot-messages .message.user {
-    align-items: flex-end;
-}
-
-.chatbot-messages .message.bot {
-    align-items: flex-start;
-}
-
-.chatbot-messages .message .text {
-    max-width: 80%;
-    padding: 10px 15px;
-    border-radius: 20px;
-    font-size: 0.95rem;
-    font-family: var(--font-body);
-}
-
-.chatbot-messages .message.user .text {
-    background: var(--accent-color);
-    color: var(--text-color);
-    border-bottom-right-radius: 0;
-}
-
-.chatbot-messages .message.bot .text {
-    background: var(--secondary-color);
-    color: var(--text-color);
-    border-bottom-left-radius: 0;
-}
-
-.chatbot-input {
-    display: flex;
-    padding: 10px 15px;
-    background: var(--primary-color);
-    border-bottom-left-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-}
-
-.chatbot-input input {
-    flex: 1;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 20px;
+.article-content p {
     font-size: 1rem;
-    background: var(--background-color);
-    color: var(--text-color);
-    outline: none;
-    transition: background 0.3s;
+    margin-bottom: 20px;
 }
 
-.chatbot-input input::placeholder {
-    color: #888;
-}
-
-.chatbot-input button {
-    background: var(--button-background);
+/* Navigation Arrows */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(30, 144, 255, 0.8); /* Semi-transparent background */
     border: none;
+    padding: 10px;
     border-radius: 50%;
-    color: var(--text-color);
-    padding: 8px;
-    margin-left: 10px;
     cursor: pointer;
-    transition: background 0.3s;
-    font-size: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    z-index: 3;
+    transition: background 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.chatbot-input button:hover {
+.carousel-nav.prev {
+    left: -50px; /* Position to the left of the carousel */
+}
+
+.carousel-nav.next {
+    right: -50px; /* Position to the right of the carousel */
+}
+
+/* Hover Effects for Navigation Arrows */
+.carousel-nav:hover {
     background: var(--button-hover-background);
+    transform: translateY(-50%) scale(1.1);
 }
 
-/* Scrollbar Styling for Chatbot Messages */
-#chatbot-messages::-webkit-scrollbar {
-    width: 8px;
-}
-
-#chatbot-messages::-webkit-scrollbar-track {
-    background: var(--scrollbar-track);
-}
-
-#chatbot-messages::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb);
-    border-radius: 4px;
-}
-
-/* Responsive Adjustments for Chatbot */
+/* Hide navigation buttons on mobile */
 @media screen and (max-width: 768px) {
-    .chatbot-container {
-        width: 90%;
-        height: 400px;
-        bottom: 70px;
-        right: 5%;
-    }
-
-    .chatbot-header h2 {
-        font-size: 1rem;
-    }
-
-    .chatbot-input input {
-        font-size: 0.9rem;
-    }
-
-    .chatbot-input button {
-        padding: 6px;
-        font-size: 0.9rem;
+    .carousel-nav {
+        display: none;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .chatbot-container {
-        height: 350px;
-    }
-
-    .chatbot-header h2 {
-        font-size: 1rem;
-    }
-
-    .chatbot-messages .message .text {
-        font-size: 0.85rem;
-    }
-
-    .chatbot-input input {
-        font-size: 0.85rem;
-    }
-
-    .chatbot-input button {
-        padding: 5px;
-        font-size: 0.8rem;
+/* Optional: Adjust carousel height for larger screens */
+@media screen and (min-width: 1024px) {
+    .carousel-3d {
+        height: 500px; /* Increase height for better visibility */
     }
 }
 
@@ -1307,4 +1195,3 @@ ol {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
