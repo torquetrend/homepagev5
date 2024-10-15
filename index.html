@@ -8,9 +8,11 @@
     <!-- Link to CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for Icons -->
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-pap6psV8z7ZbIbrJh6YP1AZXgG8ENa3+Y4eowGmM+zH6VhDZH4S50zP8Y6dT9qK4kYS2tfjLqZgk0mUO2zYwFw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-pap6psV8z7ZbIbrJh6YP1AZXgG8ENa3+Y4eowGmM+zH6VhDZH4S50zP8Y6dT9qK4kYS2tfjLqZgk0mUO2zYwFw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -32,13 +34,8 @@
                     <li><a href="#rankings" aria-label="Rankings">Rankings</a></li>
                     <li><a href="#reviews" aria-label="Reviews">Reviews</a></li>
                     <li><a href="#articles" aria-label="Articles">Articles</a></li>
+                    <li><a href="#car chatbot" aria-label="Car Chatbot">Car Chatbot</a></li>
                     <li><a href="#contact" aria-label="Contact">Contact</a></li>
-                    <!-- Chatbot Button -->
-                    <li>
-                        <button id="chatbot-button" class="chatbot-button" aria-label="Chat with us">
-                            <i class="fas fa-comments"></i> Chat
-                        </button>
-                    </li>
                 </ul>
             </nav>
 
@@ -70,13 +67,9 @@
                     <li><a href="#rankings" aria-label="Rankings" onclick="toggleSidebar()">Rankings</a></li>
                     <li><a href="#reviews" aria-label="Reviews" onclick="toggleSidebar()">Reviews</a></li>
                     <li><a href="#articles" aria-label="Articles" onclick="toggleSidebar()">Articles</a></li>
-                    <li><a href="#contact" aria-label="Contact" onclick="toggleSidebar()">Contact</a></li>
+                    <li><a href="#chat" aria-label="Chat" onclick="toggleSidebar()">Car Chatbot</a></li>
                     <!-- Chatbot Button -->
-                    <li>
-                        <button id="sidebar-chatbot-button" class="chatbot-button" aria-label="Chat with us">
-                            <i class="fas fa-comments"></i> Chat
-                        </button>
-                    </li>
+                    <li><a href="#contact" aria-label="Contact" onclick="toggleSidebar()">Contact</a></li>
                 </ul>
             </nav>
 
@@ -183,9 +176,9 @@
                     <div class="content-box">
                         <h3>Top Sports Cars</h3>
                         <ul>
-                            <li><strong>1. Porsche 911 Turbo</strong></li>
-                            <li>2. Chevrolet Corvette Z06</li>
-                            <li>3. Nissan GT-R</li>
+                            <li><strong>1. Porsche 911 GT3RS</strong></li>
+                            <li>2. Chevrolet Corvette Z06 (C8)</li>
+                            <li>3. Aston Martin Vantage</li>
                         </ul>
                         <a href="#" class="btn-secondary" aria-label="View Full List of Top Sports Cars">View Full List <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -217,48 +210,48 @@
             </div>
         </section>
 
-        <!-- Articles Carousel Section -->
-        <section id="articles" class="articles-section" aria-labelledby="articles-heading">
-            <div class="container">
-                <h2 id="articles-heading">Latest Articles</h2>
-                <div class="carousel-3d" aria-label="Latest Articles Carousel">
-                    <!-- Article Slides -->
-                    <div class="carousel-slide active" data-index="0">
-                        <div class="article-card">
-                            <img src="https://via.placeholder.com/800x600" alt="Electric Revolution">
-                            <div class="article-content">
-                                <h3>Electric Revolution</h3>
-                                <p>How electric vehicles are reshaping the automotive landscape.</p>
-                                <a href="#" class="btn-secondary" onclick="savePreference('article1')" aria-label="Read More about Electric Revolution">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
+       <!-- Articles Carousel Section -->
+<section id="articles" class="articles-section" aria-labelledby="articles-heading">
+    <div class="container">
+        <h2 id="articles-heading">Latest Articles</h2>
+        <div class="carousel-3d" aria-label="Latest Articles Carousel">
+            <!-- Article Slides -->
+            <div class="carousel-slide active" data-index="0">
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/800x600" alt="Electric Revolution">
+                    <div class="article-content">
+                        <h3>Electric Revolution</h3>
+                        <p>How electric vehicles are reshaping the automotive landscape.</p>
+                        <a href="#" class="btn-secondary" onclick="savePreference('article1')" aria-label="Read More about Electric Revolution">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="carousel-slide" data-index="1">
-                        <div class="article-card">
-                            <img src="https://via.placeholder.com/800x600" alt="Autonomous Driving">
-                            <div class="article-content">
-                                <h3>Autonomous Driving</h3>
-                                <p>The journey towards fully self-driving cars.</p>
-                                <a href="#" class="btn-secondary" onclick="savePreference('article2')" aria-label="Read More about Autonomous Driving">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-slide" data-index="2">
-                        <div class="article-card">
-                            <img src="https://via.placeholder.com/800x600" alt="Sustainable Materials">
-                            <div class="article-content">
-                                <h3>Sustainable Materials</h3>
-                                <p>Exploring eco-friendly materials in modern car manufacturing.</p>
-                                <a href="#" class="btn-secondary" onclick="savePreference('article3')" aria-label="Read More about Sustainable Materials">Read More <i class="fas fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Carousel Navigation -->
-                    <button class="carousel-nav prev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
-                    <button class="carousel-nav next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
-        </section>
+            <div class="carousel-slide" data-index="1">
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/800x600" alt="Autonomous Driving">
+                    <div class="article-content">
+                        <h3>Autonomous Driving</h3>
+                        <p>The journey towards fully self-driving cars.</p>
+                        <a href="#" class="btn-secondary" onclick="savePreference('article2')" aria-label="Read More about Autonomous Driving">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-slide" data-index="2">
+                <div class="article-card">
+                    <img src="https://via.placeholder.com/800x600" alt="Sustainable Materials">
+                    <div class="article-content">
+                        <h3>Sustainable Materials</h3>
+                        <p>Exploring eco-friendly materials in modern car manufacturing.</p>
+                        <a href="#" class="btn-secondary" onclick="savePreference('article3')" aria-label="Read More about Sustainable Materials">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel Navigation -->
+            <button class="carousel-nav prev" aria-label="Previous Slide">Back</button>
+            <button class="carousel-nav next" aria-label="Next Slide">Next</button>
+        </div>
+    </div>
+</section>
 
         <!-- Personalized Recommendations -->
         <section id="recommendations" class="recommendations-section" aria-labelledby="recommendations-heading">
