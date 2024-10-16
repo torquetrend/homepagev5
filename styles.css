@@ -1051,14 +1051,21 @@ ol {
     color: var(--accent-color);
 }
 
-.footer-social a {
+.footer-columns .footer-social h4 {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+  
+.footer-columns .footer-social a {
     margin-right: 15px;
     font-size: 1.5rem;
     color: var(--text-color);
     transition: color 0.3s;
 }
 
-.footer-social a:hover {
+.footer-columns .footer-social a:hover {
     color: var(--accent-color);
 }
 
