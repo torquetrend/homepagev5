@@ -268,21 +268,21 @@ function fetchArticlesByIds(ids) {
         const allArticles = [
             {
                 id: 'article1',
-                title: 'Electric Revolution',
-                description: 'How electric vehicles are reshaping the automotive landscape.',
-                image: 'https://via.placeholder.com/300x200'
+                title: 'Age of Electric Vehicles',
+                description: 'How electric vehicles are reshaping the automotive industry.',
+                image: 'car charging.jpg'
             },
             {
                 id: 'article2',
-                title: 'Autonomous Driving',
-                description: 'The journey towards fully self-driving cars.',
-                image: 'https://via.placeholder.com/300x200'
+                title: 'Autonomous Drivers?',
+                description: 'Our world with fully self-driving cars.',
+                image: 'waymo.jpg'
             },
             {
                 id: 'article3',
-                title: 'Sustainable Materials',
-                description: 'Exploring eco-friendly materials in modern car manufacturing.',
-                image: 'https://via.placeholder.com/300x200'
+                title: 'Sustainable Critical Materials',
+                description: 'Exploring the impacts of critical materials and our daily driving needs.',
+                image: 'lithium-mine.jpg'
             },
             // Add more articles as needed
         ];
